@@ -44,6 +44,7 @@ refreshCustomLoadoutDisplay = {
 		{
 			_buttonLoad ctrlShow true;
 		};
+
 		if !(isClass (configFile >> "CfgPatches" >> "CUP_BaseData")) then 
 		{
 			_button3DItems ctrlShow false;

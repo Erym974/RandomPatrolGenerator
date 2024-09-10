@@ -336,3 +336,8 @@ class CfgCommunicationMenu
 		//removeAfterExpressionCall = 1;	// 1 to remove the item after calling
 	};
 };
+
+class CfgFunctions
+{
+	#include "cfgFunctions.h"
+};

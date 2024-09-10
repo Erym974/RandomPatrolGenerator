@@ -601,6 +601,21 @@ getPlayerFaction = {
 	_faction;
 };
 
+setupPlayerRoleSelection = {
+
+	//InitParam
+	params ["_itemToAttachArsenal"];
+
+	_actionRoleSelection = _itemToAttachArsenal addAction ["<img size='3' image='\a3\missions_f_oldman\data\img\holdactions\holdAction_box_ca.paa'/><t size='1.2'>Role selection</t>",{
+		//Define parameters
+		params ["_object","_caller","_ID","_parameters"];
+		[[], 'GUI\roleSelectionGUI\roleSelectionGUI.sqf'] remoteExec ['BIS_fnc_execVM', player];
+	},[],1000,true, false,"",[player] call isAreaEligibleForArsenal];
+
+	//Setup initArsenal whitelist items
+	// [player, player, player call getPlayerFaction] call setupArsenalToItem;
+};
+
 setupPlayerLoadout = {
 
 	//InitParam

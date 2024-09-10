@@ -284,6 +284,9 @@ if (side player == independent) then
 	//Manage arsenal	
 	[VA1] call setupPlayerLoadout;
 
+	// [Erym] New GUI
+	[VA1] call setupPlayerRoleSelection;	
+
 	//Add vehicle shop
 	VA1 addAction [format ["<img size='2' image='\a3\ui_f_oldman\data\IGUI\Cfg\holdactions\holdAction_market_ca.paa'/><t size='1'>Open vehicle shop</t>"],{
 			//Define parameters
@@ -407,6 +410,9 @@ if (side player == blufor) then
 	//Manage arsenal
 	waitUntil{!isNil "bluforFOBBuild"};
 	[VA2] call setupPlayerLoadout;	
+
+	// [Erym] New GUI
+	[VA2] call setupPlayerRoleSelection;	
 
 	[] spawn {
 		waitUntil {!isNil "bluformobilehq"};
