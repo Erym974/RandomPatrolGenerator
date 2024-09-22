@@ -4,19 +4,6 @@ player setSpeaker "noVoice";
 bluFaction = missionNamespace getVariable "bluforFaction";
 indFaction = missionNamespace getVariable "independentFaction";
 
-_listOfAvalaibleRole =[];
-if (player getVariable "sideBeforeDeath" == "independent") then {
-	_listOfAvalaibleRole = [indFaction] call setupRoleSwitchToList;
-} else {
-	_listOfAvalaibleRole = [bluFaction] call setupRoleSwitchToList;
-};
-
-{
-	_RcsRoleListDialogIndex = lbSize _RcsRoleListDialog;
-	_RcsRoleListDialog lbAdd format ["%1", [_x] call utils_fnc_capitalizeFirstLetter];
-	_RcsRoleListDialog lbSetData [_RcsRoleListDialogIndex, _x];
-} forEach _listOfAvalaibleRole;
-
 // Display variables
 _startingXDialog = -0.15;
 _dialogWidth = 1.3;
@@ -148,6 +135,19 @@ _RcsRoleListDialog setVariable ["_selectRoleFunction", _selectRoleFunction];
 _RcsRoleListDialog setVariable ["_updateCurrentRole", _updateCurrentRole];
 _RcsRoleListDialog setVariable ["_RcsCurrentRoleTextDialog", _RcsCurrentRoleTextDialog];
 _RcsRoleListDialog setVariable ["_refreshCustomLoadoutDisplay", _refreshCustomLoadoutDisplay];
+
+_listOfAvalaibleRole =[];
+if (player getVariable "sideBeforeDeath" == "independent") then {
+	_listOfAvalaibleRole = [indFaction] call setupRoleSwitchToList;
+} else {
+	_listOfAvalaibleRole = [bluFaction] call setupRoleSwitchToList;
+};
+
+{
+	_RcsRoleListDialogIndex = lbSize _RcsRoleListDialog;
+	_RcsRoleListDialog lbAdd format ["%1", [_x] call utils_fnc_capitalizeFirstLetter];
+	_RcsRoleListDialog lbSetData [_RcsRoleListDialogIndex, _x];
+} forEach _listOfAvalaibleRole;
 
 /* When Selection change */
 	_RcsRoleListDialog ctrlAddEventHandler ["LBSelChanged", {
